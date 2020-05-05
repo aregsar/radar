@@ -127,7 +127,7 @@ DB_PASSWORD=radar
     ],
 
 
-docker compose up -d
+docker-compose up -d
 
 php artisan tinker
 
@@ -180,4 +180,4 @@ SQL > show databases;
 
 
 
-docker compose down
+docker-compose down
