@@ -15,4 +15,12 @@ services:
         - "8001:3306"
 
 
+    redis:
+      image: redis:alpine
+      container_name: radar-redis
+      command: redis-server --appendonly yes --requirepass radar
+      volumes:
+      - ./data/redis:/data
+      ports:
+        - "8002:6379"
 
