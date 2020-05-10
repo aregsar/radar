@@ -42,3 +42,9 @@ services:
       ports:
         - "8005:25"
         - "37408:37408"
+
+    mail:
+        image: schickling/mailcatcher
+        ports:
+            - 8005:1025
+            - 1080:1080
