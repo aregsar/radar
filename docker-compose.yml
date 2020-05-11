@@ -24,3 +24,16 @@ services:
       ports:
         - "8002:6379"
 
+    mysqltest:
+      image: mysql:8.0
+      container_name: radar-mysql-test
+      volumes:
+        - tmpfs:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=radar
+        - MYSQL_DATABASE=radar
+        - MYSQL_USER=radar
+        - MYSQL_PASSWORD=radar
+      ports:
+        - "8011:3306"
+
