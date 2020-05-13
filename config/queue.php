@@ -12,8 +12,7 @@ return [
     | syntax for every one. Here you may define a default connection.
     |
     */
-
-    'default' => 'job',
+    'default' => env('QUEUE_CONNECTION', 'job'),
 
     /*
     |--------------------------------------------------------------------------
