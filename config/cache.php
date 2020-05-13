@@ -17,8 +17,7 @@ return [
     |            "memcached", "redis", "dynamodb"
     |
     */
-
-    'default' => 'redis',
+    'default' => env('CACHE_DRIVER', 'redis'),
 
     /*
     |--------------------------------------------------------------------------
