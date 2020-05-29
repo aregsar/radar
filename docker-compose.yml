@@ -35,3 +35,16 @@ services:
       ports:
         - "8011:3306"
 
+    mailhog:
+      image: mailhog/mailhog:latest
+      container_name: app-mailhog
+      ports:
+        - "8003:1025"
+        - "8025:8025"
+
+    elasticsearch:
+      image: elasticsearch:6.5.4
+      container_name: app-elasticsearch
+      ports:
+        - "8004:8099"
+
