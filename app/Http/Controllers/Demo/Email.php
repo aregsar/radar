@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers\Demo;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 
-
+use App\Http\Controllers\Controller;
+use App\Mail\Demo\WelcomeEmail;
 
 class Email extends Controller
 {
     public function __invoke(Request $request)
     {
-        Mail::to("");
+        Mail::to("x@g.com")->send(new WelcomeEmail);
 
-        return "email demossssssss";
+        return "emailed";
     }
 }
