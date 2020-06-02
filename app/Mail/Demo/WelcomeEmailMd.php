@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class WelcomeEmail extends Mailable
+class WelcomeEmailMd extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,7 +20,6 @@ class WelcomeEmail extends Mailable
     {
         return $this->from('admin@myapp.com', 'Admin')
         ->subject('Welcome')
-        ->view('emails.welcome')
-        ->text('emails.welcome-txt');
+        ->markdown('emails.welcome-md');
     }
 }
