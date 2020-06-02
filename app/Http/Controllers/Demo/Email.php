@@ -16,11 +16,13 @@ class Email extends Controller
     {
         $email = new WelcomeEmail;
 
-        //Mail::to("x@g.com")->send($email);
-
-        $email = new WelcomeEmailMd;
+        $emailmd = new WelcomeEmailMd;
 
         Mail::to("x@g.com")->send($email);
+
+        //send using the default queue connection
+        //if sync queue connection behaves same as send.
+        Mail::to("x@g.com")->queue($email);
 
         return $email;
     }
