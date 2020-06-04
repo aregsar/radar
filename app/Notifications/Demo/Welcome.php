@@ -19,6 +19,9 @@ class Welcome extends Notification implements ShouldQueue
     public function via($notifiable)
     {
         return ['mail'];
+        //php artisan notifications:table
+        //php artisan migrate
+        //return ['mail', 'database'];
     }
 
     public function toMail($notifiable)
@@ -27,6 +30,13 @@ class Welcome extends Notification implements ShouldQueue
                     ->line('Welcome')
                     ->action('Home', url('/'))
                     ->line('Thank you for using our application!');
+    }
+
+    public function toDatabase($notifiable)
+    {
+        return [
+            'email' => $notifiable->email,
+        ];
     }
 
     public function toArray($notifiable)
