@@ -22,28 +22,32 @@ class Email extends Controller
     public function __invoke(Request $request)
     {
 
+        $user = User::where('email',Auth::user()->email)->first();
+
+        //========================
+        //emails
+
         $email = new WelcomeEmail;
 
         $emailmd = new WelcomeEmailMd;
 
-        //Mail::to("x@g.com")->send($email);
+        //will queue if email implements ShouldQueue contract
+        //Mail::to(Auth::user()->email)->send($email);
 
         //send using the default queue connection
-        //if sync queue connection behaves same as send.
-        //Mail::to("x@g.com")->queue($email);
-
-        $welcomeNotification = new Welcome;
-
-        //$user->notify($welcomeNotification);
-
-        $user = User::where('email',Auth::user()->email)->first();
-        $user->notify(new InvoicePaid);
-
-        //Notification::send($user, new InvoicePaid);
-        //Notification::route('mail', 'x@g.com')->notify(new InvoicePaid);
+        //if sync queue connection behaves same as send($email).
+        Mail::to(Auth::user()->email)->queue($email);
 
 
-        //dd(Auth::user());
+        //========================
+        //Notifications
+
+        //$user->notify(new Welcome);
+
+        //Notification::send($user, new Welcome);
+
+        //Notification::route('mail', Auth::user()->email)->notify(new Welcome);
+
         return $user;
     }
 }
