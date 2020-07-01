@@ -168,7 +168,7 @@ return [
             //database set to 0 since only database 0 is supported in redis cluster
             'database' => '0',
             //redis key prefix for this connection
-            'prefix' => 'q:'.env('QUEUE_PREFIX_VERSION', ''),
+            'prefix' => 'q:',
         ],
     ],
 
